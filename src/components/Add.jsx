@@ -35,6 +35,8 @@ const UserBox = styled(Box)({
 
 const Add = () => {
   const [open, setOpen] = useState(false);
+  const bgcolor = "background.default";
+  const color = "text.primary";
   return (
     <>
       <Tooltip
@@ -56,7 +58,14 @@ const Add = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box width={400} height={280} bgcolor="white" p={3} borderRadius={5}>
+        <Box
+          width={400}
+          height={280}
+          bgcolor={bgcolor}
+          color={color}
+          p={3}
+          borderRadius={5}
+        >
           <Typography variant="h6" color="gray" textAlign="center">
             Create Post
           </Typography>
@@ -81,13 +90,14 @@ const Add = () => {
             <PersonAdd color="error" />
           </Stack>
           <ButtonGroup
-          fullWidth
+            fullWidth
             variant="contained"
             aria-label="outlined primary button group"
           >
             <Button>Post</Button>
-            <Button sx={{width: "100px"}}><DateRange /></Button>
-            
+            <Button sx={{ width: "100px" }}>
+              <DateRange />
+            </Button>
           </ButtonGroup>
         </Box>
       </StyledModal>
