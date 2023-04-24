@@ -10,16 +10,11 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
-import {
-  Favorite,
-  FavoriteBorder,
-  MoreVert,
-  Share,
-} from "@mui/icons-material";
+import { Favorite, FavoriteBorder, MoreVert, Share } from "@mui/icons-material";
 
 const Post = () => {
   return (
-    <Card sx={{margin: 5}}>
+    <Card sx={{ margin: { xs: "2rem auto", md: 5 } }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">

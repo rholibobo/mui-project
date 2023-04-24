@@ -10,12 +10,29 @@ import {
   Avatar,
   Menu,
   MenuItem,
+  Switch,
+  ListItemIcon,
 } from "@mui/material";
-import { Code, Mail, Notifications } from "@mui/icons-material";
+import {
+  Code,
+  LightMode,
+  Mail,
+  ModeNight,
+  Notifications,
+} from "@mui/icons-material";
 import { useState } from "react";
 
-const Navbar = () => {
-  const [open, setOpen] = useState(false)
+const Navbar = ({ setMode, mode }) => {
+  const [switchIcons, setSwitchIcons] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  function switchIconsMode() {
+    setSwitchIcons((prevState) => !prevState);
+  }
+
+  function switchTheme() {
+    setMode(mode === "light" ? "dark" : "light");
+  }
 
   const StyledToolbar = styled(Toolbar)({
     display: "flex",
@@ -33,14 +50,14 @@ const Navbar = () => {
     display: "flex",
     alignItems: "center",
     gap: "20px",
-    cursor: "pointer"
+    cursor: "pointer",
   }));
 
   const UserBox = styled(Box)(({ theme }) => ({
     display: "flex",
     alignItems: "center",
     gap: "10px",
-    cursor: "pointer"
+    cursor: "pointer",
   }));
 
   return (
@@ -68,6 +85,24 @@ const Navbar = () => {
         <Search>
           <InputBase placeholder="search.." />
         </Search>
+        <Box alignItems="center" sx={{ display: { xs: "flex", sm: "none" } }}>
+          {switchIcons ? (
+            <LightMode
+              onClick={() => {
+                switchIconsMode();
+                switchTheme();
+              }}
+            />
+          ) : (
+            <ModeNight
+              onClick={() => {
+                switchIconsMode();
+                switchTheme();
+              }}
+            />
+          )}
+        </Box>
+
         <Icons sx={{ display: { xs: "none", sm: "flex" } }}>
           <Badge badgeContent={4} color="error">
             <Mail />
@@ -75,10 +110,10 @@ const Navbar = () => {
           <Badge badgeContent={2} color="error">
             <Notifications />
           </Badge>
-          <Avatar src="" onClick={e=>setOpen(true)}/>
+          <Avatar src="" onClick={(e) => setOpen(true)} />
         </Icons>
         <UserBox sx={{ display: { xs: "flex", sm: "none" } }}>
-          <Avatar onClick={e=>setOpen(true)}/>
+          <Avatar onClick={(e) => setOpen(true)} />
           <Typography>Rholi Pop</Typography>
         </UserBox>
       </StyledToolbar>
@@ -86,7 +121,7 @@ const Navbar = () => {
         id="demo-positioned-menu"
         aria-labelledby="demo-positioned-button"
         open={open}
-        onClose={e=>setOpen(false)}
+        onClose={(e) => setOpen(false)}
         anchorOrigin={{
           vertical: "top",
           horizontal: "right",
@@ -105,3 +140,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+// (e) => setMode(mode === "light" ? "dark" : "light")
