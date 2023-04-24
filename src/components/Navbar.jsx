@@ -83,7 +83,10 @@ const Navbar = ({ setMode, mode }) => {
           }}
         />
         <Search>
-          <InputBase placeholder="search.." />
+          <InputBase
+            placeholder = "search..." color="red"
+
+          />
         </Search>
         <Box alignItems="center" sx={{ display: { xs: "flex", sm: "none" } }}>
           {switchIcons ? (
